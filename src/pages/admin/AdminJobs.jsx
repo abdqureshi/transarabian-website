@@ -1,0 +1,10 @@
+import { useEffect,useState } from "react";
+import { Link } from "react-router-dom";
+import DataTable from "../../components/admin/DataTable";import FilterBar from "../../components/admin/FilterBar";import StatusBadge from "../../components/admin/StatusBadge";import Pagination from "../../components/common/Pagination";import { jobsService } from "../../services/jobsService";import { formatStatus,JOB_STATUSES } from "../../config/statuses";
+
+export default function AdminJobs(){
+  const [rows,setRows]=useState([]);const [count,setCount]=useState(0);const [search,setSearch]=useState("");const [status,setStatus]=useState("");const [page,setPage]=useState(1);
+  const load=()=>jobsService.list({search,status,page}).then(r=>{setRows(r.data);setCount(r.count)});useEffect(load,[search,status,page]);
+  const columns=[{key:"title",label:"Job",render:r=><div><b>{r.title}</b><small>{r.country} · {r.trade}</small></div>},{key:"status",label:"Status",render:r=><StatusBadge status={r.status}/>},{key:"vacancies",label:"Vacancies"},{key:"salary_display",label:"Salary"},{key:"created_at",label:"Created",render:r=>new Date(r.created_at).toLocaleDateString()},{key:"actions",label:"",render:r=><div className="table-actions"><Link to={`/admin/jobs/${r.id}/edit`}>Edit</Link><button onClick={async()=>{await jobsService.update(r.id,{status:r.status==="open"?"closed":"open"});load()}}>{r.status==="open"?"Close":"Open"}</button></div>}];
+  return <><header className="ats-page-head"><div><span>Vacancy management</span><h1>Jobs</h1><p>Create, publish, feature and close recruitment vacancies.</p></div></header><FilterBar search={search} onSearch={setSearch} action={<Link className="button small" to="/admin/jobs/new">New Job ＋</Link>}><select value={status} onChange={e=>setStatus(e.target.value)}><option value="">All statuses</option>{JOB_STATUSES.map(v=><option value={v} key={v}>{formatStatus(v)}</option>)}</select></FilterBar><DataTable columns={columns} rows={rows}/><Pagination page={page} pages={Math.ceil(count/20)} onChange={setPage}/></>;
+}

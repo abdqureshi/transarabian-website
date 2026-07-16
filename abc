@@ -1,0 +1,26 @@
+import { useState } from "react"
+import "./App.css"
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div className="container">
+      <h1>🚀 My React App is Running</h1>
+
+      <p>Simple Counter Example:</p>
+
+      <div className="card">
+        <button onClick={() => setCount(count - 1)}>-</button>
+
+        <span className="count">{count}</span>
+
+        <button onClick={() => setCount(count + 1)}>+</button>
+      </div>
+
+      <p className="footer">Built with React ⚛️</p>
+    </div>
+  )
+}
+
+export default App

@@ -1,0 +1,2 @@
+import { documentsService } from "../../services/documentsService";
+export default function DocumentsPanel({documents=[]}){const open=async path=>window.open(await documentsService.signedUrl(path),"_blank","noopener");return <section className="documents-panel"><h2>Documents</h2>{documents.length?documents.map(doc=><button onClick={()=>open(doc.storage_path)} key={doc.id}><span>▤</span><div><b>{doc.document_type}</b><small>Private document</small></div><i>View ↗</i></button>):<p>No documents uploaded.</p>}</section>}

@@ -1,0 +1,1 @@
+export default function ConfirmDialog({open,title,message,onConfirm,onCancel}){if(!open)return null;return <div className="confirm-backdrop" role="dialog" aria-modal="true"><div><h2>{title}</h2><p>{message}</p><footer><button onClick={onCancel}>Cancel</button><button className="button small" onClick={onConfirm}>Confirm</button></footer></div></div>}

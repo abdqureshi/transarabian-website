@@ -1,0 +1,1 @@
+export default function FilterBar({search,onSearch,children,action}){return <div className="ats-filter-bar"><label><span>⌕</span><input value={search} onChange={e=>onSearch(e.target.value)} placeholder="Search records"/></label>{children}<div className="ats-filter-action">{action}</div></div>}

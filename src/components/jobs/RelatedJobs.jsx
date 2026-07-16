@@ -1,0 +1,2 @@
+import JobCard from "./JobCard";
+export default function RelatedJobs({jobs,current}){const related=jobs.filter(job=>job.slug!==current.slug&&(job.category===current.category||job.country===current.country)).slice(0,3);return <section className="section shade related-jobs"><div className="detail-heading centered"><span>Similar opportunities</span><h2>Related Jobs</h2></div><div className="portal-job-grid">{related.map(job=><JobCard job={job} key={job.slug}/>)}</div></section>}

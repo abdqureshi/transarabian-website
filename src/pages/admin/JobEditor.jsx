@@ -1,0 +1,15 @@
+import { useEffect,useState } from "react";
+import { useNavigate,useParams } from "react-router-dom";
+import { jobsService } from "../../services/jobsService";
+import { formatStatus,JOB_STATUSES } from "../../config/statuses";
+
+const fields=[["title","Job title","text"],["slug","Slug","text"],["country","Country","text"],["city","City","text"],["industry","Industry","text"],["category","Category","text"],["trade","Trade","text"],["permission_number","Permission number","text"],["salary_min","Minimum salary","number"],["salary_max","Maximum salary","number"],["salary_currency","Currency","text"],["salary_display","Salary display","text"],["vacancies","Vacancies","number"],["experience_text","Experience","text"],["qualification","Qualification","text"],["contract_type","Contract type","text"],["contract_duration","Contract duration","text"],["working_hours","Working hours","text"],["closing_date","Closing date","date"],["interview_date","Interview date","datetime-local"],["interview_location","Interview location","text"],["poster_url","Poster URL","url"]];
+
+export default function JobEditor(){
+  const {id}=useParams();const navigate=useNavigate();
+  const [job,setJob]=useState({status:"draft",featured:false,urgent:false,employer_confidential:true});
+  const [saving,setSaving]=useState(false);
+  useEffect(()=>{if(id)jobsService.get(id).then(setJob)},[id]);
+  const submit=async e=>{e.preventDefault();setSaving(true);const data=Object.fromEntries(new FormData(e.currentTarget));data.featured=e.currentTarget.featured.checked;data.urgent=e.currentTarget.urgent.checked;data.vacancies=Number(data.vacancies||1);data.salary_min=Number(data.salary_min||0);data.salary_max=Number(data.salary_max||0);if(id)await jobsService.update(id,data);else await jobsService.create(data);navigate("/admin/jobs")};
+  return <><header className="ats-page-head"><div><span>Job management</span><h1>{id?"Edit Job":"Create Job"}</h1></div></header><form className="ats-editor" onSubmit={submit}>{fields.map(([name,label,type])=><label key={name}><span>{label}</span><input name={name} type={type} value={job[name]||""} required={["title","slug","country"].includes(name)} onChange={e=>setJob({...job,[name]:e.target.value})}/></label>)}<label><span>Status</span><select name="status" value={job.status||"draft"} onChange={e=>setJob({...job,status:e.target.value})}>{JOB_STATUSES.map(v=><option value={v} key={v}>{formatStatus(v)}</option>)}</select></label><label className="wide"><span>Description</span><textarea name="description" value={job.description||""} onChange={e=>setJob({...job,description:e.target.value})}></textarea></label><div className="editor-checks"><label><input name="featured" type="checkbox" checked={Boolean(job.featured)} onChange={e=>setJob({...job,featured:e.target.checked})}/> Featured</label><label><input name="urgent" type="checkbox" checked={Boolean(job.urgent)} onChange={e=>setJob({...job,urgent:e.target.checked})}/> Urgent</label></div><footer><button type="button" onClick={()=>navigate("/admin/jobs")}>Cancel</button><button className="button" disabled={saving}>{saving?"Saving…":"Save Job"}</button></footer></form></>;
+}

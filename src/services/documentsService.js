@@ -1,0 +1,2 @@
+import { requireBackend } from "./apiClient";
+export const documentsService={signedUrl:async(path,expiresIn=300)=>{const r=await requireBackend().storage.from("candidate-documents").createSignedUrl(path,expiresIn);if(r.error)throw r.error;return r.data.signedUrl},remove:async path=>{const r=await requireBackend().storage.from("candidate-documents").remove([path]);if(r.error)throw r.error;return r.data}};

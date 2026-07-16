@@ -1,0 +1,6 @@
+import sourceJobs from "./jobs.json";
+const dates=["2026-07-13","2026-07-12","2026-07-11","2026-07-10","2026-07-09","2026-07-08","2026-07-07","2026-07-06","2026-07-05","2026-07-04","2026-07-03","2026-07-02","2026-07-01","2026-06-30","2026-06-29"];
+const numberFrom=(value,index=0)=>Number((value.match(/[\d,]+/g)?.[index]||"0").replaceAll(",",""));
+export const jobs=sourceJobs.map((job,index)=>({...job,id:job.id||`${job.slug}-${String(index+1).padStart(3,"0")}`,city:job.city||"",salaryMin:job.salaryMin||numberFrom(job.salary),salaryMax:job.salaryMax||numberFrom(job.salary,1),salaryCurrency:job.salaryCurrency||job.salary.split(" ")[0],experienceMin:job.experienceMin||numberFrom(job.experience),experienceMax:job.experienceMax||numberFrom(job.experience),contractType:job.contractType||"Long Term",workingHours:job.workingHours||job.hours,employerName:job.employerName||"Confidential",permissionNumber:job.permissionNumber||"Available on official advertisement",status:job.status||"Open",featured:job.featured??index<3,postedDate:job.postedDate||dates[index],closingDate:job.closingDate||"",applicationEmail:job.applicationEmail||"jobs@transarabian.org",applicationWhatsApp:job.applicationWhatsApp||"03402202333"}));
+export const openForApplications=job=>!["Closed","Filled"].includes(job.status);
+export const jobBySlug=slug=>jobs.find(job=>job.slug===slug);

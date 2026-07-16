@@ -1,0 +1,3 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+export default function ScrollManager(){const {pathname,hash}=useLocation();useEffect(()=>{requestAnimationFrame(()=>{if(hash){document.querySelector(hash)?.scrollIntoView()}else{window.scrollTo({top:0,behavior:"instant"})}});const observer=new IntersectionObserver(entries=>entries.forEach(entry=>entry.isIntersecting&&entry.target.classList.add("visible")),{threshold:.1});requestAnimationFrame(()=>document.querySelectorAll(".reveal").forEach(el=>observer.observe(el)));return()=>observer.disconnect()},[pathname,hash]);return null}

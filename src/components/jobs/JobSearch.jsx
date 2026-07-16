@@ -1,0 +1,1 @@
+export default function JobSearch({value,onChange,onSubmit}){return <form className="portal-search" onSubmit={e=>{e.preventDefault();onSubmit()}}><b>⌕</b><input value={value} onChange={e=>onChange(e.target.value)} placeholder="Search job title, keyword, trade, industry or country" aria-label="Search jobs"/><button type="submit">Search Jobs</button></form>}
