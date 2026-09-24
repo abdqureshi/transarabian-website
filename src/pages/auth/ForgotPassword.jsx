@@ -23,6 +23,6 @@ export default function ForgotPassword(){
     {error&&<div className="form-error" role="alert">{error}</div>}
     {sent&&<div className="form-success" role="status">Check your inbox for the password reset link.</div>}
     {!sent&&<button className="button" disabled={submitting}>{submitting?"Sending…":"Send Reset Link →"}</button>}
-    <Link className="auth-text-link" to="/auth/login">Return to sign in</Link>
+    <Link className="auth-text-link" to="/account/login">Return to sign in</Link>
   </form></section>;
 }

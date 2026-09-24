@@ -5,6 +5,8 @@ import ValuesSection from "../components/about/ValuesSection";
 import IndustriesSection from "../components/about/IndustriesSection";
 import StatisticsSection from "../components/about/StatisticsSection";
 import CTASection from "../components/about/CTASection";
+import directorImage from "../assets/jobs/director-image.jpg";
+import ceoImage from "../assets/jobs/ceo-image.jpg";
 
 const countries=[["🇸🇦","Saudi Arabia"],["🇦🇪","United Arab Emirates"],["🇶🇦","Qatar"],["🇰🇼","Kuwait"],["🇴🇲","Oman"],["🇧🇭","Bahrain"],["🇯🇴","Jordan"],["🇱🇧","Lebanon"],["🇾🇪","Yemen"],["🇲🇷","Mauritania"],["🇧🇼","Botswana"],["🇬🇩","Grenada"],["🇪🇹","Ethiopia"],["🇲🇿","Mozambique"],["🇦🇿","Azerbaijan"],["🇰🇿","Kazakhstan"],["🇺🇿","Uzbekistan"],["🇬🇶","Equatorial Guinea"]];
 
@@ -16,7 +18,7 @@ export default function About(){return <>
     <article className="reveal"><span className="about-kicker">Company overview</span><h2>Who We Are</h2><p>Trans Arabian Travel &amp; Trade is one of Pakistan&apos;s oldest and most trusted Overseas Employment Promoters. Since 1974, we have connected skilled professionals with leading employers across the Middle East, Africa, Central Asia and other international markets.</p><p>With more than five decades of experience, our organization has successfully recruited over 150,000 professionals while maintaining the highest standards of integrity, transparency and professionalism.</p><div className="overview-points"><span><b>✓</b> Government licensed</span><span><b>✓</b> Merit-based recruitment</span><span><b>✓</b> Global deployment capability</span></div></article>
   </section>
 
-  <ExecutiveMessage name="Muhammad Zia Qureshi" designation="Director" signature="Muhammad Zia Qureshi" image="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=85">
+  <ExecutiveMessage className="leadership-photo" name="Muhammad Zia Qureshi" designation="Director" signature="Muhammad Zia Qureshi" image={directorImage}>
     <p>For more than five decades, Trans Arabian has served with distinction as an independent Overseas Employment Promoter, earning the confidence of international employers and the Government of Pakistan.</p>
     <p>Our receipt of all four Outstanding Performance Awards presented by the Government of Pakistan reflects a sustained commitment to ethical recruitment, professional excellence and responsible service. To date, we have successfully deployed more than 150,000 highly skilled, skilled and semi-skilled professionals to nearly twenty countries across a broad range of industries.</p>
     <p>Our transparent, merit-based recruitment methodology has earned the trust of employers, job seekers and government authorities alike. Supported by a comprehensive candidate database and dedicated trade-testing facilities, we maintain access to qualified personnel who can be mobilized at short notice.</p>
@@ -24,7 +26,7 @@ export default function About(){return <>
     <p>Since 1974, we have proudly supported Consolidated Contractors International Company (CCC), recruiting manpower for projects in Saudi Arabia, Qatar, Kuwait, the UAE, Yemen, Lebanon, Jordan, Botswana, Mauritania, Ethiopia, Mozambique, Azerbaijan, Kazakhstan, Uzbekistan, Equatorial Guinea and numerous other international markets.</p>
   </ExecutiveMessage>
 
-  <ExecutiveMessage reverse name="Wing Commander (R) Muhammad Zahid Qureshi" designation="Chief Executive Officer" signature="Muhammad Zahid Qureshi" image="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=900&q=85">
+  <ExecutiveMessage reverse className="leadership-photo" name="Wing Commander (R) Muhammad Zahid Qureshi" designation="Chief Executive Officer" signature="Muhammad Zahid Qureshi" image={ceoImage}>
     <p>At Trans Arabian, we take immense pride in carrying forward a legacy founded on integrity, professionalism and trust. For more than fifty years, our organization has recruited and deployed highly trained, ethically responsible professionals for employers around the world.</p>
     <p>This enduring journey has been shaped by three generations of dedicated leadership, each committed to the same standard of excellence established in 1974.</p>
     <p>Our mission remains clear: to provide the right person for the right job through transparent, merit-based recruitment and unwavering ethical standards.</p>

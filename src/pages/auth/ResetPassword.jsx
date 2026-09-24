@@ -21,7 +21,7 @@ export default function ResetPassword(){
     finally{setSubmitting(false)}
   };
 
-  if(!auth.session)return <section className="account-page"><article className="setup-panel"><span>Recovery link required</span><h1>This link is invalid or expired</h1><p>Request a new password reset email to continue.</p><Link className="button" to="/auth/forgot-password">Request New Link</Link></article></section>;
+  if(!auth.session)return <section className="account-page"><article className="setup-panel"><span>Recovery link required</span><h1>This link is invalid or expired</h1><p>Request a new password reset email to continue.</p><Link className="button" to="/account/forgot-password">Request New Link</Link></article></section>;
   return <section className="account-page"><form className="account-card" onSubmit={submit}>
     <span>Secure password update</span><h1>Choose a new password</h1><p>Use at least eight characters and avoid passwords used on other websites.</p>
     {!complete&&<><label>New password<input name="password" type="password" minLength="8" autoComplete="new-password" required/></label><label>Confirm password<input name="confirmPassword" type="password" minLength="8" autoComplete="new-password" required/></label></>}

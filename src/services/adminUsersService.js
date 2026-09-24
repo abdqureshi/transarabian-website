@@ -1,0 +1,6 @@
+import { cleanSearch,pageRange,serviceCall } from "./apiClient";
+export const adminUsersService={
+  list:async({search="",role="",active="",page=1,pageSize=25}={})=>serviceCall(async db=>{const range=pageRange(page,pageSize);let q=db.from("profiles").select("id,full_name,email,phone,is_active,created_at,user_roles(role_id,roles(name))",{count:"exact"}).order("created_at",{ascending:false}).range(range.from,range.to);const term=cleanSearch(search);if(term)q=q.or(`full_name.ilike.%${term}%,email.ilike.%${term}%`);if(active!=="")q=q.eq("is_active",active);if(role)q=q.eq("user_roles.roles.name",role);return q},{context:"adminUsers.list",fallback:"Unable to load user accounts."}),
+  setActive:async(id,isActive)=>serviceCall(db=>db.from("profiles").update({is_active:isActive}).eq("id",id).select().single(),{context:"adminUsers.active",fallback:"Unable to update this account."}),
+  assignRole:async(userId,roleName)=>serviceCall(async db=>{const role=await db.from("roles").select("id").eq("name",roleName).single();if(role.error)return role;return db.from("user_roles").upsert({user_id:userId,role_id:role.data.id},{onConflict:"user_id,role_id"}).select().single()},{context:"adminUsers.role",fallback:"Unable to assign the role."})
+};

@@ -1,0 +1,2 @@
+const USER_MESSAGES={"Invalid login credentials":"The email or password is incorrect.","Email not confirmed":"Please confirm your email address before signing in.","User not found":"We could not find that account.","JWT expired":"Your session expired. Please sign in again."};
+export function publicError(error,fallback="We could not complete that request. Please try again."){if(!error)return fallback;if(error.message==="BACKEND_NOT_CONFIGURED")return "This service is temporarily unavailable.";return USER_MESSAGES[error.message]||fallback}
