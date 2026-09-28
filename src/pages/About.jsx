@@ -7,6 +7,7 @@ import StatisticsSection from "../components/about/StatisticsSection";
 import CTASection from "../components/about/CTASection";
 import directorImage from "../assets/jobs/director-image.jpg";
 import ceoImage from "../assets/jobs/ceo-image.jpg";
+import gmImage from "../assets/gm-abdul-rahman-qureshi.jpg";
 
 const countries=[["🇸🇦","Saudi Arabia"],["🇦🇪","United Arab Emirates"],["🇶🇦","Qatar"],["🇰🇼","Kuwait"],["🇴🇲","Oman"],["🇧🇭","Bahrain"],["🇯🇴","Jordan"],["🇱🇧","Lebanon"],["🇾🇪","Yemen"],["🇲🇷","Mauritania"],["🇧🇼","Botswana"],["🇬🇩","Grenada"],["🇪🇹","Ethiopia"],["🇲🇿","Mozambique"],["🇦🇿","Azerbaijan"],["🇰🇿","Kazakhstan"],["🇺🇿","Uzbekistan"],["🇬🇶","Equatorial Guinea"]];
 
@@ -33,7 +34,7 @@ export default function About(){return <>
     <p>We remain firmly committed to strengthening Pakistan&apos;s reputation as a reliable source of skilled manpower while creating meaningful international career opportunities for thousands of Pakistani professionals.</p>
   </ExecutiveMessage>
 
-  <ExecutiveMessage className="leadership-divider" title="General Manager's Message" name="Abdul Rahman Qureshi" designation="General Manager" signature="Abdul Rahman Qureshi" image="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=900&q=85">
+  <ExecutiveMessage className="leadership-divider" title="General Manager's Message" name="Abdul Rahman Qureshi" designation="General Manager" signature="Abdul Rahman Qureshi" image={gmImage}>
     <p>As we build upon more than five decades of excellence, our vision is not only to preserve the legacy of Trans Arabian Travel &amp; Trade but to prepare it for the future. The global workforce landscape is evolving rapidly, and so are the expectations of employers. Today, recruitment demands speed, transparency, compliance, and access to highly skilled professionals who can contribute from day one.</p>
     <p>At Trans Arabian, we are embracing this transformation by integrating modern technologies, digital recruitment systems, data-driven talent sourcing, and internationally aligned selection processes. While our values remain rooted in integrity, professionalism, and trust, our approach continues to evolve to meet the changing needs of global employers.</p>
     <p>Our commitment extends beyond recruitment. We believe Pakistan possesses one of the world&apos;s most capable and resilient workforces, and our responsibility is to connect that talent with meaningful opportunities across international markets. Through continuous improvement, strategic partnerships, and a relentless focus on quality, we aim to create lasting value for our clients, candidates, and the nation.</p>
