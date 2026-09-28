@@ -101,3 +101,17 @@
 .job-benefits-summary{margin:12px 0 0;color:#277447;font-size:9px;font-weight:700;line-height:1.6}.featured-jobs-grid{grid-template-columns:repeat(4,1fr)}.featured-jobs-grid .job-card{min-width:0}.featured-jobs-grid .job-card .button{margin:4px 5px 0 0}
 @media(max-width:1100px){.featured-jobs-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.featured-jobs-grid{grid-template-columns:1fr}}
+.recruitment-banner{position:relative;width:100%;z-index:2;min-height:48px;display:flex;align-items:center;overflow:hidden;border-top:1px solid rgba(244,180,0,.55);border-bottom:1px solid rgba(244,180,0,.55);background:rgba(6,27,51,.98)}
+.recruitment-banner__viewport{width:100%;overflow:hidden}
+.recruitment-banner__track{display:flex;width:max-content;animation:recruitment-marquee 34s linear infinite;will-change:transform}
+.recruitment-banner__segment{display:flex;flex:none;align-items:center;gap:0;padding-right:clamp(28px,4vw,64px);color:#fff;font-size:clamp(10px,1.05vw,13px);font-weight:600;letter-spacing:.035em;line-height:1.4;white-space:nowrap}
+.recruitment-banner__segment[aria-hidden="true"]{user-select:none}
+.recruitment-banner__lead{margin-right:10px;color:var(--navy);background:var(--gold);padding:6px 11px;border-radius:100px;font-weight:800;letter-spacing:.08em}
+.recruitment-banner__segment>a:not(.recruitment-banner__action){color:#fff;text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:3px}
+.recruitment-banner__action{margin:0 8px;padding:5px 10px;border-radius:5px;background:var(--gold);color:var(--navy);font-weight:800;letter-spacing:.06em;text-decoration:none}
+.recruitment-banner__action:hover{background:#ffd04f}
+@keyframes recruitment-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(hover:hover) and (pointer:fine){.recruitment-banner:hover .recruitment-banner__track{animation-play-state:paused}}
+.recruitment-banner:focus-within .recruitment-banner__track{animation-play-state:paused}
+@media(max-width:600px){.recruitment-banner{min-height:44px}.recruitment-banner__segment{font-size:10px;letter-spacing:.02em;padding-right:28px}.recruitment-banner__lead{margin-right:7px;padding:5px 9px}.recruitment-banner__action{margin:0 6px;padding:5px 8px}}
+@media(prefers-reduced-motion:reduce){.recruitment-banner__track{animation:none;transform:none;will-change:auto}.recruitment-banner__viewport{overflow-x:auto;scrollbar-width:thin}.recruitment-banner__segment[aria-hidden="true"]{display:none}}
